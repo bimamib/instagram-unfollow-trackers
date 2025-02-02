@@ -26,11 +26,13 @@ export default function UnfollowersPage() {
   }, []);
 
   return (
-    <main className="container mx-auto p-4">
+    <main className="container mx-auto px-4 py-8 max-w-4xl">
       <Card>
         <CardHeader>
-          <CardTitle>Instagram Unfollowers</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-2xl sm:text-3xl md:text-4xl">
+            Instagram Unfollowers
+          </CardTitle>
+          <CardDescription className="text-sm sm:text-base">
             People who dont follow you back. Total unfollowers:{" "}
             {unfollowers.length}
           </CardDescription>

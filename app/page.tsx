@@ -1,4 +1,5 @@
 "use client";
+
 import { UploadFilesCard } from "@/components/upload-files-card";
 import { InstructionsCard } from "@/components/instructions-card";
 import { Toaster } from "@/components/ui/toaster";
@@ -21,8 +22,8 @@ export default function Home() {
   };
 
   return (
-    <main className="container mx-auto p-4 max-w-2xl">
-      <h1 className="text-3xl font-bold text-center mb-8">
+    <main className="container mx-auto px-4 py-8 max-w-2xl">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8">
         Instagram Unfollowers Tracker
       </h1>
       <UploadFilesCard onProcessComplete={handleProcessComplete} />
