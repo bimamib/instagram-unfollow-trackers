@@ -59,18 +59,18 @@ export function UnfollowersTable({ data }: UnfollowersTableProps) {
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <Input
           placeholder="Search username"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="max-w-sm"
+          className="max-w-sm text-sm sm:text-base rounded-lg"
         />
         <Select
           onValueChange={handleItemsPerPageChange}
           defaultValue={itemsPerPage.toString()}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-[180px] text-sm sm:text-base rounded-lg">
             <SelectValue placeholder="Items per page" />
           </SelectTrigger>
           <SelectContent>
@@ -81,7 +81,7 @@ export function UnfollowersTable({ data }: UnfollowersTableProps) {
           </SelectContent>
         </Select>
       </div>
-      <div className="border rounded-md">
+      <div className="border rounded-lg overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
@@ -112,13 +112,13 @@ export function UnfollowersTable({ data }: UnfollowersTableProps) {
       </div>
       <div className="flex justify-center mt-4">
         <Pagination>
-          <PaginationContent>
+          <PaginationContent className="flex flex-wrap justify-center gap-1">
             <PaginationItem>
               <PaginationPrevious
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                className={
+                className={`${
                   currentPage === 1 ? "pointer-events-none opacity-50" : ""
-                }
+                } text-sm sm:text-base`}
               />
             </PaginationItem>
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
@@ -132,13 +132,19 @@ export function UnfollowersTable({ data }: UnfollowersTableProps) {
                     <PaginationLink
                       onClick={() => setCurrentPage(page)}
                       isActive={currentPage === page}
+                      className="text-sm sm:text-base"
                     >
                       {page}
                     </PaginationLink>
                   </PaginationItem>
                 );
               } else if (page === currentPage - 2 || page === currentPage + 2) {
-                return <PaginationEllipsis key={page} />;
+                return (
+                  <PaginationEllipsis
+                    key={page}
+                    className="text-sm sm:text-base"
+                  />
+                );
               }
               return null;
             })}
@@ -147,11 +153,11 @@ export function UnfollowersTable({ data }: UnfollowersTableProps) {
                 onClick={() =>
                   setCurrentPage((prev) => Math.min(prev + 1, totalPages))
                 }
-                className={
+                className={`${
                   currentPage === totalPages
                     ? "pointer-events-none opacity-50"
                     : ""
-                }
+                } text-sm sm:text-base`}
               />
             </PaginationItem>
           </PaginationContent>
