@@ -106,29 +106,35 @@ export function UploadFilesCard({ onProcessComplete }: UploadFilesCardProps) {
   return (
     <Card className="mb-6">
       <CardHeader>
-        <CardTitle>Upload Files</CardTitle>
+        <CardTitle className="text-xl sm:text-2xl">Upload Files</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="followers">Followers JSON</Label>
+          <Label htmlFor="followers" className="text-sm sm:text-base">
+            Followers JSON
+          </Label>
           <Input
             id="followers"
             type="file"
             accept=".json"
             onChange={(e) => handleFileUpload(e, "followers")}
+            className="text-sm sm:text-base rounded-lg"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="followings">Followings JSON</Label>
+          <Label htmlFor="followings" className="text-sm sm:text-base">
+            Followings JSON
+          </Label>
           <Input
             id="followings"
             type="file"
             accept=".json"
             onChange={(e) => handleFileUpload(e, "followings")}
+            className="text-sm sm:text-base rounded-lg"
           />
         </div>
         <Button
-          className="w-full bg-black hover:bg-gray-800"
+          className="w-full bg-black hover:bg-gray-800 text-sm sm:text-base py-2 sm:py-3 rounded-lg"
           onClick={handleUploadAndProcess}
         >
           Upload and Process
