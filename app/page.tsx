@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 interface InstagramDataItem {
   string_list_data: Array<{
@@ -15,7 +15,7 @@ interface InstagramDataItem {
 }
 
 interface InstagramData {
-  relationships_following: InstagramDataItem[];
+  relationships_following?: InstagramDataItem[];
 }
 
 interface Follower {
@@ -27,6 +27,7 @@ export default function Home() {
   const [followers, setFollowers] = useState<Follower[]>([]);
   const [followings, setFollowings] = useState<Follower[]>([]);
   const [unfollowersCount, setUnfollowersCount] = useState(0);
+  const { toast } = useToast();
 
   const handleFileUpload = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -38,12 +39,12 @@ export default function Home() {
       reader.onload = (e) => {
         try {
           const content = e.target?.result as string;
-          const data = JSON.parse(content);
+          const data: InstagramData | InstagramDataItem[] = JSON.parse(content);
 
           let extractedData: Follower[] = [];
 
           if (type === "followers" && Array.isArray(data)) {
-            extractedData = data.map((item) => ({
+            extractedData = data.map((item: InstagramDataItem) => ({
               username: item.string_list_data[0].value,
               profile_link: item.string_list_data[0].href,
             }));
@@ -51,15 +52,14 @@ export default function Home() {
             type === "followings" &&
             typeof data === "object" &&
             data !== null &&
-            "relationships_following" in data
+            Array.isArray((data as InstagramData).relationships_following)
           ) {
-            const typedData = data as InstagramData;
-            extractedData = typedData.relationships_following.map(
-              (item: InstagramDataItem) => ({
-                username: item.string_list_data[0].value,
-                profile_link: item.string_list_data[0].href,
-              })
-            );
+            extractedData = (
+              data as InstagramData
+            ).relationships_following!.map((item: InstagramDataItem) => ({
+              username: item.string_list_data[0].value,
+              profile_link: item.string_list_data[0].href,
+            }));
           } else {
             throw new Error("Invalid data format");
           }
@@ -105,7 +105,14 @@ export default function Home() {
     localStorage.setItem("unfollowers", JSON.stringify(unfollowersList));
     setUnfollowersCount(unfollowersList.length);
 
-    window.location.href = "/unfollowers";
+    toast({
+      title: "Processing complete",
+      description: `Found ${unfollowersList.length} unfollowers. Redirecting to results page...`,
+    });
+
+    setTimeout(() => {
+      window.location.href = "/unfollowers";
+    }, 2000);
   };
 
   const handleDownloadInstructions = () => {
@@ -114,38 +121,47 @@ export default function Home() {
   };
 
   return (
-    <main className="py-8 px-4 sm:px-6 lg:px-8">
+    <main className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto space-y-8">
-        <h1 className="text-3xl font-bold text-center text-foreground">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-foreground">
           Instagram Unfollowers Tracker
         </h1>
 
         <Card className="bg-card text-card-foreground">
           <CardHeader>
-            <CardTitle>Upload Files</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">Upload Files</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="followers">Followers JSON</Label>
+                <Label htmlFor="followers" className="text-sm sm:text-base">
+                  Followers JSON
+                </Label>
                 <Input
                   id="followers"
                   type="file"
                   accept=".json"
                   onChange={(e) => handleFileUpload(e, "followers")}
+                  className="text-sm sm:text-base"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="followings">Followings JSON</Label>
+                <Label htmlFor="followings" className="text-sm sm:text-base">
+                  Followings JSON
+                </Label>
                 <Input
                   id="followings"
                   type="file"
                   accept=".json"
                   onChange={(e) => handleFileUpload(e, "followings")}
+                  className="text-sm sm:text-base"
                 />
               </div>
             </div>
-            <Button className="w-full" onClick={handleUploadAndProcess}>
+            <Button
+              className="w-full text-sm sm:text-base"
+              onClick={handleUploadAndProcess}
+            >
               Upload and Process
             </Button>
           </CardContent>
@@ -153,10 +169,15 @@ export default function Home() {
 
         <Card className="bg-card text-card-foreground">
           <CardHeader>
-            <CardTitle>How to Request Your Instagram Data</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">
+              How to Request Your Instagram Data
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <Button className="w-full" onClick={handleDownloadInstructions}>
+            <Button
+              className="w-full text-sm sm:text-base"
+              onClick={handleDownloadInstructions}
+            >
               Download Instructions PDF
             </Button>
           </CardContent>
