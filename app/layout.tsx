@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import type React from "react"; // Added import for React
 import { Toaster } from "@/components/ui/toaster";
+import { Footer } from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({
             </header>
             {children}
           </div>
+          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>
