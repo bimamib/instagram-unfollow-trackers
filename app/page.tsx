@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { FileUpload } from "@/components/file-upload";
 
 interface InstagramDataItem {
   string_list_data: Array<{
@@ -133,30 +132,16 @@ export default function Home() {
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="followers" className="text-sm sm:text-base">
-                  Followers JSON
-                </Label>
-                <Input
-                  id="followers"
-                  type="file"
-                  accept=".json"
-                  onChange={(e) => handleFileUpload(e, "followers")}
-                  className="text-sm sm:text-base"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="followings" className="text-sm sm:text-base">
-                  Followings JSON
-                </Label>
-                <Input
-                  id="followings"
-                  type="file"
-                  accept=".json"
-                  onChange={(e) => handleFileUpload(e, "followings")}
-                  className="text-sm sm:text-base"
-                />
-              </div>
+              <FileUpload
+                id="followers"
+                label="Followers JSON"
+                onChange={(e) => handleFileUpload(e, "followers")}
+              />
+              <FileUpload
+                id="followings"
+                label="Followings JSON"
+                onChange={(e) => handleFileUpload(e, "followings")}
+              />
             </div>
             <Button
               className="w-full text-sm sm:text-base"
