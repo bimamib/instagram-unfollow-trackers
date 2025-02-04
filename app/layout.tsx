@@ -12,6 +12,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Instagram Unfollowers Tracker",
   description: "Track who unfollowed you on Instagram",
+  icons: {
+    icon: "/ig-favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -21,6 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/ig-favicon.ico" sizes="any" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
