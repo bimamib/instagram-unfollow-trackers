@@ -15,15 +15,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from "lucide-react";
 
 interface Follower {
   username: string;
@@ -49,30 +47,15 @@ export function UnfollowersTable({
 }: UnfollowersTableProps) {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
 
   return (
     <div className="space-y-4">
-      <div className="flex justify-end">
-        <Select
-          onValueChange={(value) => onItemsPerPageChange(Number(value))}
-          defaultValue={itemsPerPage.toString()}
-        >
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Items per page" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="10">10 per page</SelectItem>
-            <SelectItem value="20">20 per page</SelectItem>
-            <SelectItem value="50">50 per page</SelectItem>
-            <SelectItem value="100">100 per page</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <div className="rounded-md border overflow-x-auto">
+      <div className="w-full overflow-auto border rounded-md">
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[60px]">No.</TableHead>
+              <TableHead className="w-[60px] text-center">No.</TableHead>
               <TableHead className="min-w-[150px]">Username</TableHead>
               <TableHead className="min-w-[200px]">Instagram Profile</TableHead>
             </TableRow>
@@ -106,68 +89,74 @@ export function UnfollowersTable({
           </TableBody>
         </Table>
       </div>
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div className="text-sm text-muted-foreground">
-          Showing {startIndex + 1} to{" "}
-          {Math.min(startIndex + itemsPerPage, totalItems)} of {totalItems}{" "}
-          results
+
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-2">
+        <div className="flex items-center space-x-2 text-sm order-1 sm:order-none">
+          <span className="text-muted-foreground whitespace-nowrap">
+            Rows per page
+          </span>
+          <Select
+            value={itemsPerPage.toString()}
+            onValueChange={(value) => onItemsPerPageChange(Number(value))}
+          >
+            <SelectTrigger className="h-8 w-16">
+              <SelectValue>{itemsPerPage}</SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="5">5</SelectItem>
+              <SelectItem value="10">10</SelectItem>
+              <SelectItem value="20">20</SelectItem>
+              <SelectItem value="50">50</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
-        <div className="flex justify-center">
-          <Pagination>
-            <PaginationContent className="flex flex-wrap justify-center gap-1">
-              <PaginationItem>
-                <PaginationPrevious
-                  onClick={() => onPageChange(Math.max(currentPage - 1, 1))}
-                  className={`${
-                    currentPage === 1 ? "pointer-events-none opacity-50" : ""
-                  }`}
-                />
-              </PaginationItem>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => {
-                  if (
-                    page === 1 ||
-                    page === totalPages ||
-                    (page >= currentPage - 1 && page <= currentPage + 1)
-                  ) {
-                    return (
-                      <PaginationItem key={page}>
-                        <PaginationLink
-                          onClick={() => onPageChange(page)}
-                          isActive={currentPage === page}
-                          className="min-w-[40px] justify-center"
-                        >
-                          {page}
-                        </PaginationLink>
-                      </PaginationItem>
-                    );
-                  } else if (
-                    page === currentPage - 2 ||
-                    page === currentPage + 2
-                  ) {
-                    return (
-                      <PaginationItem key={page}>
-                        <PaginationEllipsis className="min-w-[40px] justify-center" />
-                      </PaginationItem>
-                    );
-                  }
-                  return null;
-                }
-              )}
-              <PaginationItem>
-                <PaginationNext
-                  onClick={() =>
-                    onPageChange(Math.min(currentPage + 1, totalPages))
-                  }
-                  className={`${
-                    currentPage === totalPages
-                      ? "pointer-events-none opacity-50"
-                      : ""
-                  }`}
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+          <div className="flex items-center text-sm text-muted-foreground whitespace-nowrap order-2 sm:order-none">
+            {`${startIndex + 1}-${endIndex} of ${totalItems}`}
+          </div>
+          <div className="flex items-center space-x-2 order-1 sm:order-none">
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => onPageChange(1)}
+              disabled={currentPage === 1}
+            >
+              <span className="sr-only">Go to first page</span>
+              <ChevronsLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => onPageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <span className="sr-only">Go to previous page</span>
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => onPageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              <span className="sr-only">Go to next page</span>
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => onPageChange(totalPages)}
+              disabled={currentPage === totalPages}
+            >
+              <span className="sr-only">Go to last page</span>
+              <ChevronsRight className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </div>
     </div>

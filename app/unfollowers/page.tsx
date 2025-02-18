@@ -2,17 +2,11 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { UnfollowersTable } from "@/components/unfollowers-table";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 interface Follower {
   username: string;
@@ -45,7 +39,7 @@ export default function UnfollowersPage() {
 
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
-    setCurrentPage(1); // Reset to first page when search term changes
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page: number) => {
@@ -54,7 +48,7 @@ export default function UnfollowersPage() {
 
   const handleItemsPerPageChange = (value: number) => {
     setItemsPerPage(value);
-    setCurrentPage(1); // Reset to first page when items per page changes
+    setCurrentPage(1);
   };
 
   return (
@@ -67,7 +61,7 @@ export default function UnfollowersPage() {
               Back
             </Button>
           </Link>
-          <div className="flex flex-col items-start sm:items-end">
+          <div className="flex flex-col items-start sm:items-end w-full sm:w-auto">
             <h1 className="text-2xl font-bold">Instagram Unfollowers</h1>
             <p className="text-sm text-muted-foreground">
               Total unfollowers: {unfollowers.length}
@@ -75,7 +69,7 @@ export default function UnfollowersPage() {
           </div>
         </div>
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="mb-4">
               <Input
                 placeholder="Search username"
