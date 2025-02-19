@@ -56,7 +56,7 @@ export default function UnfollowersPage() {
       <div className="max-w-[1200px] mx-auto space-y-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <Link href="/">
-            <Button variant="outline" size="sm" className="h-8">
+            <Button variant="outline" size="sm" className="h-8 rounded-lg">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
             </Button>
@@ -75,7 +75,7 @@ export default function UnfollowersPage() {
                 placeholder="Search username"
                 value={searchTerm}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="max-w-sm"
+                className="max-w-sm rounded-lg"
               />
             </div>
             <UnfollowersTable
