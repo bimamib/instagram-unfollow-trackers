@@ -51,7 +51,7 @@ export function UnfollowersTable({
 
   return (
     <div className="space-y-4">
-      <div className="w-full overflow-auto border rounded-md">
+      <div className="w-full overflow-auto border rounded-lg">
         <Table>
           <TableHeader>
             <TableRow>
@@ -99,10 +99,10 @@ export function UnfollowersTable({
             value={itemsPerPage.toString()}
             onValueChange={(value) => onItemsPerPageChange(Number(value))}
           >
-            <SelectTrigger className="h-8 w-16">
+            <SelectTrigger className="h-8 w-16 rounded-lg">
               <SelectValue>{itemsPerPage}</SelectValue>
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="rounded-lg">
               <SelectItem value="5">5</SelectItem>
               <SelectItem value="10">10</SelectItem>
               <SelectItem value="20">20</SelectItem>
@@ -119,7 +119,7 @@ export function UnfollowersTable({
             <Button
               variant="outline"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 rounded-lg"
               onClick={() => onPageChange(1)}
               disabled={currentPage === 1}
             >
@@ -129,7 +129,7 @@ export function UnfollowersTable({
             <Button
               variant="outline"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 rounded-lg"
               onClick={() => onPageChange(currentPage - 1)}
               disabled={currentPage === 1}
             >
@@ -139,7 +139,7 @@ export function UnfollowersTable({
             <Button
               variant="outline"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 rounded-lg"
               onClick={() => onPageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
             >
@@ -149,7 +149,7 @@ export function UnfollowersTable({
             <Button
               variant="outline"
               size="icon"
-              className="h-8 w-8"
+              className="h-8 w-8 rounded-lg"
               onClick={() => onPageChange(totalPages)}
               disabled={currentPage === totalPages}
             >
