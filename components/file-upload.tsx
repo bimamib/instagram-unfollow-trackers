@@ -19,7 +19,7 @@ export function FileUpload({ id, label, onChange }: FileUploadProps) {
         type="file"
         accept=".json"
         onChange={onChange}
-        className="text-sm sm:text-base"
+        className="text-sm sm:text-base rounded-lg"
       />
     </div>
   );
