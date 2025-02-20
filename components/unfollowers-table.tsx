@@ -15,13 +15,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
 import {
   ChevronLeft,
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { type ButtonProps, buttonVariants } from "@/components/ui/button";
 
 interface Follower {
   username: string;
@@ -36,6 +37,29 @@ interface UnfollowersTableProps {
   onPageChange: (page: number) => void;
   onItemsPerPageChange: (value: number) => void;
 }
+
+const PaginationLink = ({
+  className,
+  isActive,
+  size = "icon",
+  ...props
+}: {
+  className?: string;
+  isActive?: boolean;
+  size?: Pick<ButtonProps, "size">["size"];
+} & React.ComponentProps<"button">) => (
+  <button
+    className={cn(
+      buttonVariants({
+        variant: "outline",
+        size,
+      }),
+      "h-8 w-8 p-0 border",
+      className
+    )}
+    {...props}
+  />
+);
 
 export function UnfollowersTable({
   data,
@@ -90,16 +114,16 @@ export function UnfollowersTable({
         </Table>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-2">
-        <div className="flex items-center space-x-2 text-sm order-1 sm:order-none">
-          <span className="text-muted-foreground whitespace-nowrap">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-2 py-1">
+        <div className="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start order-2 sm:order-1">
+          <span className="text-sm text-muted-foreground whitespace-nowrap">
             Rows per page
           </span>
           <Select
             value={itemsPerPage.toString()}
             onValueChange={(value) => onItemsPerPageChange(Number(value))}
           >
-            <SelectTrigger className="h-8 w-16 rounded-lg">
+            <SelectTrigger className="h-8 w-[70px] border bg-background rounded-lg">
               <SelectValue>{itemsPerPage}</SelectValue>
             </SelectTrigger>
             <SelectContent className="rounded-lg">
@@ -111,51 +135,43 @@ export function UnfollowersTable({
           </Select>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-          <div className="flex items-center text-sm text-muted-foreground whitespace-nowrap order-2 sm:order-none">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto order-1 sm:order-2">
+          <span className="text-sm text-muted-foreground whitespace-nowrap text-center sm:text-left">
             {`${startIndex + 1}-${endIndex} of ${totalItems}`}
-          </div>
-          <div className="flex items-center space-x-2 order-1 sm:order-none">
-            <Button
-              variant="outline"
-              size="icon"
-              className="h-8 w-8 rounded-lg"
+          </span>
+          <div className="flex items-center gap-1">
+            <PaginationLink
               onClick={() => onPageChange(1)}
               disabled={currentPage === 1}
+              className="disabled:opacity-50 disabled:cursor-not-allowed rounded-lg"
             >
               <span className="sr-only">Go to first page</span>
               <ChevronsLeft className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="h-8 w-8 rounded-lg"
+            </PaginationLink>
+            <PaginationLink
               onClick={() => onPageChange(currentPage - 1)}
               disabled={currentPage === 1}
+              className="disabled:opacity-50 disabled:cursor-not-allowed rounded-lg"
             >
               <span className="sr-only">Go to previous page</span>
               <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="h-8 w-8 rounded-lg"
+            </PaginationLink>
+            <PaginationLink
               onClick={() => onPageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
+              className="disabled:opacity-50 disabled:cursor-not-allowed rounded-lg"
             >
               <span className="sr-only">Go to next page</span>
               <ChevronRight className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              className="h-8 w-8 rounded-lg"
+            </PaginationLink>
+            <PaginationLink
               onClick={() => onPageChange(totalPages)}
               disabled={currentPage === totalPages}
+              className="disabled:opacity-50 disabled:cursor-not-allowed rounded-lg"
             >
               <span className="sr-only">Go to last page</span>
               <ChevronsRight className="h-4 w-4" />
-            </Button>
+            </PaginationLink>
           </div>
         </div>
       </div>
