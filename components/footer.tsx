@@ -33,7 +33,7 @@ export function Footer() {
   return (
     <footer className="bg-background border-t border-border mt-auto">
       <div className="container mx-auto px-4 py-6 flex flex-col items-center text-center">
-        <div className="text-sm text-muted-foreground mb-2">© Bimss</div>
+        <div className="text-sm text-muted-foreground mb-2">&copy; Bimss</div>
         <div className="text-sm text-muted-foreground">
           {currentTime ? formatDate(currentTime) : ""}
         </div>
