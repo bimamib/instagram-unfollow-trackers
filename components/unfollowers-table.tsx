@@ -1,8 +1,8 @@
 "use client";
 
+import type * as React from "react";
 import {
   Table,
-  TableBody,
   TableCell,
   TableHead,
   TableHeader,
@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { type ButtonProps, buttonVariants } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Follower {
   username: string;
@@ -75,7 +76,7 @@ export function UnfollowersTable({
 
   return (
     <div className="space-y-4">
-      <div className="w-full overflow-auto border rounded-lg">
+      <div className="w-full overflow-hidden border rounded-lg">
         <Table>
           <TableHeader>
             <TableRow>
@@ -84,33 +85,41 @@ export function UnfollowersTable({
               <TableHead className="min-w-[200px]">Instagram Profile</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
-            {data.map((item, index) => (
-              <TableRow key={index}>
-                <TableCell className="text-center">
-                  {startIndex + index + 1}
-                </TableCell>
-                <TableCell>{item.username}</TableCell>
-                <TableCell className="break-all">
-                  <a
-                    href={item.profile_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                  >
-                    {item.profile_link}
-                  </a>
-                </TableCell>
-              </TableRow>
-            ))}
-            {data.length === 0 && (
-              <TableRow>
-                <TableCell colSpan={3} className="text-center py-4">
-                  No data found
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
+          <AnimatePresence mode="wait">
+            <motion.tbody
+              key={currentPage}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {data.map((item, index) => (
+                <TableRow key={index}>
+                  <TableCell className="text-center">
+                    {startIndex + index + 1}
+                  </TableCell>
+                  <TableCell>{item.username}</TableCell>
+                  <TableCell className="break-all">
+                    <a
+                      href={item.profile_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:underline"
+                    >
+                      {item.profile_link}
+                    </a>
+                  </TableCell>
+                </TableRow>
+              ))}
+              {data.length === 0 && (
+                <TableRow>
+                  <TableCell colSpan={3} className="text-center py-4">
+                    No data found
+                  </TableCell>
+                </TableRow>
+              )}
+            </motion.tbody>
+          </AnimatePresence>
         </Table>
       </div>
 
