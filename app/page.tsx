@@ -71,6 +71,7 @@ export default function Home() {
           toast({
             title: "File uploaded successfully",
             description: `${type} data has been loaded.`,
+            className: "rounded-lg",
           });
         } catch (error) {
           console.error("Error parsing JSON:", error);
