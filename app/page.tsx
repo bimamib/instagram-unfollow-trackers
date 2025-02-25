@@ -80,6 +80,7 @@ export default function Home() {
             description:
               "Failed to parse the JSON file. Please ensure it's in the correct format.",
             variant: "destructive",
+            className: "rounded-lg",
           });
         }
       };
