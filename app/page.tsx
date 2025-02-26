@@ -92,6 +92,7 @@ export default function Home() {
     if (followers.length === 0 || followings.length === 0) {
       toast({
         title: "Error",
+        className: "rounded-lg",
         description:
           "Please upload both followers and followings data before processing.",
         variant: "destructive",
