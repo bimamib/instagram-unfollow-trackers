@@ -110,6 +110,7 @@ export default function Home() {
     toast({
       title: "Processing complete",
       description: `Found ${unfollowersList.length} unfollowers. Redirecting to results page...`,
+      className: "rounded-lg",
     });
 
     setTimeout(() => {
