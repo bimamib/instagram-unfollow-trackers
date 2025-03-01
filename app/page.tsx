@@ -148,7 +148,7 @@ export default function Home() {
               />
             </div>
             <Button
-              className="w-full text-sm sm:text-base"
+              className="w-full text-sm sm:text-base rounded-lg"
               onClick={handleUploadAndProcess}
             >
               Upload and Process
