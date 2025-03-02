@@ -164,7 +164,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <Button
-              className="w-full text-sm sm:text-base"
+              className="w-full text-sm sm:text-base rounded-lg"
               onClick={handleDownloadInstructions}
             >
               Download Instructions PDF
