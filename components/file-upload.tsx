@@ -166,6 +166,7 @@ export function FileUpload() {
         <Input
           id="followers"
           type="file"
+          className="rounded-lg"
           onChange={(e) => setFollowersFile(e.target.files?.[0] || null)}
         />
       </div>
@@ -174,11 +175,12 @@ export function FileUpload() {
         <Input
           id="followings"
           type="file"
+          className="rounded-lg"
           onChange={(e) => setFollowingsFile(e.target.files?.[0] || null)}
         />
       </div>
       <Button onClick={handleDetectUnfollowers} className="w-full">
-        <Upload className="w-4 h-4 mr-2" />
+        <Upload className="w-4 h-4 mr-2 rounded-lg" />
         Detect Unfollowers
       </Button>
     </div>
