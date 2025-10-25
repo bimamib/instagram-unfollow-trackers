@@ -75,7 +75,7 @@ export default function UnfollowersPage() {
                 placeholder="Search username"
                 value={searchTerm}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="max-w-sm rounded-lg"
+                className="max-w-sm rounded-lg px-3 py-1.5"
               />
             </div>
             <UnfollowersTable
