@@ -170,7 +170,7 @@ export function FileUpload() {
       file:bg-gray-50 file:border-0
       file:me-4
       file:py-2 file:px-4
-      dark:file:bg-neutral-700 dark:rounded-lg dark:file:text-neutral-400"
+      dark:file:bg-neutral-700 dark:file:text-neutral-400"
           onChange={(e) => setFollowersFile(e.target.files?.[0] || null)}
         />
       </div>
@@ -183,7 +183,7 @@ export function FileUpload() {
       file:bg-gray-50 file:border-0
       file:me-4
       file:py-2 file:px-4
-      dark:file:bg-neutral-700 dark:rounded-lg dark:file:text-neutral-400"
+      dark:file:bg-neutral-700 dark:file:text-neutral-400"
           onChange={(e) => setFollowingsFile(e.target.files?.[0] || null)}
         />
       </div>
