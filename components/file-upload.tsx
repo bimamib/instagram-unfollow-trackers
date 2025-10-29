@@ -166,7 +166,7 @@ export function FileUpload() {
         <Input
           id="followers"
           type="file"
-          className="rounded-lg shadow-sm file:py-1.5 px-3 file:me-4"
+          className="rounded-lg shadow-sm file:py-1.5 px-3 file:me-4 text-sm"
           // className="block w-full rounded-lg shadow-sm file:py-1.5 px-3 file:me-4 dark:text-neutral-400 dark:file:text-neutral-400"
           onChange={(e) => setFollowersFile(e.target.files?.[0] || null)}
         />
@@ -176,7 +176,7 @@ export function FileUpload() {
         <Input
           id="followings"
           type="file"
-          className="rounded-lg shadow-sm file:py-1.5 px-3 file:me-4"
+          className="rounded-lg shadow-sm file:py-1.5 px-3 file:me-4 text-sm"
           // className="block w-full rounded-lg shadow-sm file:py-1.5 px-3 file:me-4 dark:text-neutral-400 dark:file:text-neutral-400"
           onChange={(e) => setFollowingsFile(e.target.files?.[0] || null)}
         />
