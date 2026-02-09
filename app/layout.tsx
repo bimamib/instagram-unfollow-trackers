@@ -1,20 +1,63 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
-import type React from "react"; // Added import for React
+import type React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Footer } from "@/components/footer";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/+$/, "") ||
+  "https://instagram-unfollow-trackers.vercel.app/"; // fallback aman (ubah kalau mau)
+
 export const metadata: Metadata = {
-  title: "Instagram Unfollowers Tracker",
-  description: "Track who unfollowed you on Instagram",
-  icons: {
-    icon: "/ig-favicon.ico",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Instagram Unfollowers Tracker",
+    template: "%s | Instagram Unfollowers Tracker",
   },
+  description:
+    "Upload Instagram followers & following JSON files and detect accounts that don’t follow you back. Runs locally in your browser.",
+  alternates: { canonical: "/" },
+  icons: { icon: "/ig-favicon.ico" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "Instagram Unfollowers Tracker",
+    description:
+      "Detect accounts that don’t follow you back using your Instagram data files. Runs locally in your browser.",
+    siteName: "Instagram Unfollowers Tracker",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "OG Image" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Instagram Unfollowers Tracker",
+    description:
+      "Detect accounts that don’t follow you back using your Instagram data files. Runs locally in your browser.",
+    images: ["/og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export default function RootLayout({
@@ -22,10 +65,27 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Instagram Unfollowers Tracker",
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Web",
+    url: siteUrl,
+    description:
+      "Upload Instagram followers & following JSON files and detect accounts that don’t follow you back. Runs locally in your browser.",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/ig-favicon.ico" sizes="any" />
+        <Script
+          id="jsonld-softwareapp"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={inter.className}>
         <ThemeProvider
@@ -40,8 +100,10 @@ export default function RootLayout({
                 <ThemeToggle />
               </div>
             </header>
+
             {children}
           </div>
+
           <Footer />
           <Toaster />
         </ThemeProvider>
