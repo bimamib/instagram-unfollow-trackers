@@ -1,40 +1,30 @@
-export default function Changelog() {
+import fs from "node:fs";
+import path from "node:path";
+
+function escapeHtml(s: string) {
+  return s
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+export default function ChangelogPage() {
+  const filePath = path.join(process.cwd(), "CHANGELOG.md");
+  const md = fs.existsSync(filePath) ? fs.readFileSync(filePath, "utf8") : "";
+
+  // Render simple (aman, tanpa markdown parser)
+  // Kalau mau render markdown proper, nanti bisa ditingkatkan.
   return (
-    <main className="container mx-auto p-6 max-w-2xl">
+    <main className="container mx-auto p-6 max-w-3xl">
       <h1 className="text-3xl font-bold">Changelog</h1>
+      <p className="text-sm text-muted-foreground mt-2">
+        Release notes for each version.
+      </p>
 
-      <div className="mt-6 space-y-4">
-        <div>
-          <h2 className="font-semibold">v1.2.2</h2>
-          <p className="text-sm text-muted-foreground">Added Changelog</p>
-        </div>
-
-        <div>
-          <h2 className="font-semibold">v1.2.1</h2>
-          <p className="text-sm text-muted-foreground">
-            Added SEO metadata + sitemap + robots.txt
-          </p>
-        </div>
-
-        <div>
-          <h2 className="font-semibold">v1.2.0</h2>
-          <p className="text-sm text-muted-foreground">
-            Update UI, List Steps Request for Instagram Data, Bug fixes
-          </p>
-        </div>
-
-        <div>
-          <h2 className="font-semibold">v1.1.1</h2>
-          <p className="text-sm text-muted-foreground">Bug fixes</p>
-        </div>
-
-        <div>
-          <h2 className="font-semibold">v1.0.0</h2>
-          <p className="text-sm text-muted-foreground">
-            Initial release — Upload JSON + Detect unfollowers
-          </p>
-        </div>
-      </div>
+      <pre
+        className="mt-6 whitespace-pre-wrap rounded-xl border border-border bg-background p-4 text-sm leading-relaxed overflow-x-auto"
+        dangerouslySetInnerHTML={{ __html: escapeHtml(md) }}
+      />
     </main>
   );
 }
