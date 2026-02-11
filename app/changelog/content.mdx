@@ -1,0 +1,169 @@
+import { ReleaseCard } from "@/components/changelog/ReleaseCard";
+
+export const metadata = {
+  title: "Changelog",
+  description: "Release history and updates for Instagram Unfollowers Tracker.",
+};
+
+# Changelog
+
+Riwayat update **Instagram Unfollowers Tracker** dari awal rilis sampai versi terbaru.
+
+<div className="mt-6 grid gap-4">
+
+<ReleaseCard
+  version="2.0.2"
+  date="Feb 10, 2026"
+  tag="Latest"
+  highlight="Maintenance release (standard-version)."
+  sections={[{ title: "Maintenance", items: ["chore(release): 2.0.2"] }]}
+/>
+
+<ReleaseCard
+  version="2.0.1"
+  date="Feb 10, 2026"
+  tag="Release"
+  highlight="Minor maintenance update."
+  sections={[{ title: "Maintenance", items: ["chore(release): 2.0.1"] }]}
+/>
+
+<ReleaseCard
+  version="2.0.0"
+  date="Feb 10, 2026"
+  tag="Major"
+  highlight="Major release: versioning + release flow stabilized."
+  sections={[
+    {
+      title: "Highlights",
+      items: [
+        "chore(release): 2.0.0",
+        "Release pipeline becomes stable with tags and GitHub Releases.",
+      ],
+    },
+  ]}
+/>
+
+<ReleaseCard
+  version="1.2.4"
+  tag="Patch"
+  highlight="UI polish + version bump."
+  sections={[
+    {
+      title: "Fixed",
+      items: ["Footer separator updated from hyphen (-) to en dash (—)."],
+    },
+    {
+      title: "Maintenance",
+      items: ["Version updated to 1.2.4 in package.json."],
+    },
+  ]}
+/>
+
+<ReleaseCard
+  version="1.2.2"
+  tag="Patch"
+  highlight="Release scripts introduced."
+  sections={[
+    {
+      title: "Added",
+      items: [
+        "Release scripts added to package.json.",
+        "Version bumped to 1.2.2.",
+      ],
+    },
+  ]}
+/>
+
+<ReleaseCard
+  version="1.2.x"
+  tag="Feature"
+  highlight="Footer version display & SSR wrapper introduced."
+  sections={[
+    {
+      title: "Added",
+      items: [
+        "Version display in Footer.",
+        "FooterServer component for improved SSR.",
+        "Footer refactor to align with App Router patterns.",
+      ],
+    },
+  ]}
+/>
+
+<ReleaseCard
+  version="1.1.x"
+  tag="Docs"
+  highlight="Changelog page added and improved."
+  sections={[
+    {
+      title: "Added",
+      items: [
+        "Changelog page to display version history and updates.",
+        "Component reads from CHANGELOG.md.",
+      ],
+    },
+    {
+      title: "Improved",
+      items: ["Escape HTML applied for safer rendering."],
+    },
+  ]}
+/>
+
+<ReleaseCard
+  version="1.0.x"
+  tag="Automation"
+  highlight="Automated GitHub releases."
+  sections={[
+    {
+      title: "Added",
+      items: ["GitHub Actions workflow for automated release creation."],
+    },
+  ]}
+/>
+
+<ReleaseCard
+  version="0.x"
+  tag="SEO"
+  highlight="SEO features added to improve indexing."
+  sections={[
+    {
+      title: "Added",
+      items: [
+        "robots.txt generation for crawler control.",
+        "sitemap.xml generation for indexing.",
+        "RootLayout metadata improved (OpenGraph + Twitter + JSON-LD).",
+      ],
+    },
+    {
+      title: "Improved",
+      items: [
+        "Home page layout + guidance enhanced.",
+        "Unfollowers page refactor using UnfollowersClient.",
+      ],
+    },
+  ]}
+/>
+
+<ReleaseCard
+  version="Initial"
+  tag="Start"
+  highlight="Core features implemented."
+  sections={[
+    {
+      title: "Core",
+      items: [
+        "Upload followers & following JSON.",
+        "Detect accounts that don’t follow back.",
+        "Search + pagination in results table.",
+      ],
+    },
+    {
+      title: "UI",
+      items: [
+        "Input spacing/padding iterations for consistency and dark mode.",
+      ],
+    },
+  ]}
+/>
+
+</div>
