@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/bimamib/instagram-unfollow-trackers/compare/v2.1.0...v2.1.1) (2026-02-11)
+
+
+### Features
+
+* enhance changelog layout with improved UI spacing and new components, docs: add v2.1.1 release note ([55d0483](https://github.com/bimamib/instagram-unfollow-trackers/commit/55d04834cf6b4bb3a8b6920027e25afe5e0f30ee))
+
 ## [2.1.0](https://github.com/bimamib/instagram-unfollow-trackers/compare/v2.0.2...v2.1.0) (2026-02-11)
 
 
