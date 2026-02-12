@@ -6,11 +6,8 @@ export const metadata = {
 };
 
 <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 max-w-5xl">
-
   <header className="mb-10 space-y-2">
-    <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
-      Changelog
-    </h1>
+    <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Changelog</h1>
 
     <p className="text-sm sm:text-base text-muted-foreground">
       Riwayat update <b>Instagram Unfollowers Tracker</b> dari awal rilis sampai versi terbaru.
@@ -19,11 +16,27 @@ export const metadata = {
   </header>
 
   <div className="grid gap-6">
+    <ReleaseCard
+      version="2.1.2"
+      highlight="Patch update to improve changelog consistency and release metadata automation."
+      sections={[
+        {
+          title: "Improved",
+          items: [
+            "Simplified ReleaseCard usage by removing manual date and tag fields.",
+            "Release badges and dates are now handled automatically via git tag metadata.",
+            "Cleaner MDX layout and more consistent spacing across versions.",
+          ],
+        },
+        {
+          title: "Maintenance",
+          items: ["Minor refactor for better maintainability of the changelog system."],
+        },
+      ]}
+    />
 
-      <ReleaseCard
+    <ReleaseCard
       version="2.1.1"
-      date="Feb 12, 2026"
-      tag="Patch"
       highlight="UI spacing improvements for the changelog layout."
       sections={[
         {
@@ -36,11 +49,8 @@ export const metadata = {
       ]}
     />
 
-
-      <ReleaseCard
+    <ReleaseCard
       version="2.1.0"
-      date="Feb 12, 2026"
-      tag="Latest"
       highlight="New changelog system with MDX + UI components."
       sections={[
         {
@@ -60,8 +70,6 @@ export const metadata = {
 
     <ReleaseCard
       version="2.0.2"
-      date="Feb 10, 2026"
-      tag="Latest"
       highlight="Maintenance release (standard-version)."
       sections={[
         {
@@ -73,8 +81,6 @@ export const metadata = {
 
     <ReleaseCard
       version="2.0.1"
-      date="Feb 10, 2026"
-      tag="Release"
       highlight="Minor maintenance update."
       sections={[
         {
@@ -86,8 +92,6 @@ export const metadata = {
 
     <ReleaseCard
       version="2.0.0"
-      date="Feb 10, 2026"
-      tag="Major"
       highlight="Major release: versioning + release flow stabilized."
       sections={[
         {
@@ -102,7 +106,6 @@ export const metadata = {
 
     <ReleaseCard
       version="1.2.4"
-      tag="Patch"
       highlight="UI polish + version bump."
       sections={[
         {
@@ -118,22 +121,17 @@ export const metadata = {
 
     <ReleaseCard
       version="1.2.2"
-      tag="Patch"
       highlight="Release scripts introduced."
       sections={[
         {
           title: "Added",
-          items: [
-            "Release scripts added to package.json.",
-            "Version bumped to 1.2.2.",
-          ],
+          items: ["Release scripts added to package.json.", "Version bumped to 1.2.2."],
         },
       ]}
     />
 
     <ReleaseCard
       version="1.2.x"
-      tag="Feature"
       highlight="Footer version display & SSR wrapper introduced."
       sections={[
         {
@@ -149,15 +147,11 @@ export const metadata = {
 
     <ReleaseCard
       version="1.1.x"
-      tag="Docs"
       highlight="Changelog page added and improved."
       sections={[
         {
           title: "Added",
-          items: [
-            "Changelog page to display version history.",
-            "Component reads from CHANGELOG.md.",
-          ],
+          items: ["Changelog page to display version history.", "Component reads from CHANGELOG.md."],
         },
         {
           title: "Improved",
@@ -168,7 +162,6 @@ export const metadata = {
 
     <ReleaseCard
       version="1.0.x"
-      tag="Automation"
       highlight="Automated GitHub Releases enabled."
       sections={[
         {
@@ -180,7 +173,6 @@ export const metadata = {
 
     <ReleaseCard
       version="0.x"
-      tag="SEO"
       highlight="SEO features added to improve Google indexing."
       sections={[
         {
@@ -203,7 +195,6 @@ export const metadata = {
 
     <ReleaseCard
       version="Initial"
-      tag="Start"
       highlight="Core tool features implemented."
       sections={[
         {
