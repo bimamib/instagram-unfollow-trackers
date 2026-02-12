@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/bimamib/instagram-unfollow-trackers/compare/v2.1.1...v2.1.2) (2026-02-12)
+
+
+### Features
+
+* add prebuild script to generate release metadata ([7bf9aa0](https://github.com/bimamib/instagram-unfollow-trackers/commit/7bf9aa0651b4d305ea7eb9799e17e1b291b81b39))
+* add release metadata file with version dates and latest version ([bf8fc82](https://github.com/bimamib/instagram-unfollow-trackers/commit/bf8fc827a9819a56227f5a2aed6c22379d24e909))
+* add script to generate release metadata from git tags ([b5aeadf](https://github.com/bimamib/instagram-unfollow-trackers/commit/b5aeadf50437f899b6991124f01c85a87fcda968))
+* enhance changelog with improved consistency and automated release metadata ([f9584d7](https://github.com/bimamib/instagram-unfollow-trackers/commit/f9584d7e55d224ddb4b523fcd8bb20cd8d44e8ca))
+* enhance ReleaseCard to auto-generate date and tag from release metadata ([bccaae1](https://github.com/bimamib/instagram-unfollow-trackers/commit/bccaae173aaab997d3b62ae0709a51500547aa98))
+
 ### [2.1.1](https://github.com/bimamib/instagram-unfollow-trackers/compare/v2.1.0...v2.1.1) (2026-02-11)
 
 
