@@ -2,6 +2,7 @@
 // Do not edit manually.
 
 export const releaseDates: Record<string, string> = {
+  "2.1.3": "2026-02-14",
   "2.1.2": "2026-02-13",
   "2.1.1": "2026-02-12",
   "2.1.0": "2026-02-12",
@@ -10,4 +11,4 @@ export const releaseDates: Record<string, string> = {
   "2.0.0": "2026-02-11"
 };
 
-export const latestVersion: string = "2.1.2";
+export const latestVersion: string = "2.1.3";
