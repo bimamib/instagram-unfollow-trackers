@@ -17,6 +17,27 @@ export const metadata = {
 
   <div className="grid gap-6">
     <ReleaseCard
+      version="2.1.3"
+      highlight="Patch update to improve SEO structured data and overall site metadata."
+      sections={[
+        {
+          title: "Improved",
+          items: [
+            "Added WebSite JSON-LD schema to strengthen Google site identity.",
+            "Improved metadata consistency across pages.",
+            "Minor layout and SEO refinements.",
+          ],
+        },
+        {
+          title: "Maintenance",
+          items: [
+            "Patch release for small improvements and cleanup.",
+          ],
+        },
+      ]}
+    />
+
+    <ReleaseCard
       version="2.1.2"
       highlight="Patch update to improve changelog consistency and release metadata automation."
       sections={[
