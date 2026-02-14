@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/bimamib/instagram-unfollow-trackers/compare/v2.1.2...v2.1.3) (2026-02-14)
+
+
+### Features
+
+* add JSON-LD schema for SoftwareApplication and WebSite to improve SEO ([833a637](https://github.com/bimamib/instagram-unfollow-trackers/commit/833a6375b9a013c289b6dbbac8a00fc7b7752c71))
+* update release metadata for version 2.1.2 ([33d9505](https://github.com/bimamib/instagram-unfollow-trackers/commit/33d95051de8699b85fcde84ebfde8dfb3a4bdd15))
+
 ### [2.1.2](https://github.com/bimamib/instagram-unfollow-trackers/compare/v2.1.1...v2.1.2) (2026-02-12)
 
 
