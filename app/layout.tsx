@@ -65,7 +65,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
+  const jsonLdSoftwareApp = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "Instagram Unfollowers Tracker",
@@ -77,16 +77,43 @@ export default function RootLayout({
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   };
 
+  // ✅ Tambahan: WebSite schema untuk bantu Google “site name”
+  const jsonLdWebsite = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Instagram Unfollowers Tracker",
+    url: siteUrl,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${siteUrl}/?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/ig-favicon.ico" sizes="any" />
+
+        {/* SoftwareApplication schema */}
         <Script
           id="jsonld-softwareapp"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdSoftwareApp),
+          }}
+        />
+
+        {/* ✅ WebSite schema (Site Name) */}
+        <Script
+          id="jsonld-website"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdWebsite),
+          }}
         />
       </head>
+
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
