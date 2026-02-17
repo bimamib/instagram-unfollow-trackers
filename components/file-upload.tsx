@@ -43,7 +43,7 @@ export function FileUpload() {
                     return null;
                   })
                   .filter(
-                    (item: Follower | null): item is Follower => item !== null
+                    (item: Follower | null): item is Follower => item !== null,
                   );
                 resolve(followers);
               } else {
@@ -60,7 +60,7 @@ export function FileUpload() {
         reader.readAsText(file);
       });
     },
-    []
+    [],
   );
 
   const parseFollowingsFile = useCallback(
@@ -88,7 +88,7 @@ export function FileUpload() {
                     return null;
                   })
                   .filter(
-                    (item: Follower | null): item is Follower => item !== null
+                    (item: Follower | null): item is Follower => item !== null,
                   );
                 resolve(followings);
               } else {
@@ -105,7 +105,7 @@ export function FileUpload() {
         reader.readAsText(file);
       });
     },
-    []
+    [],
   );
 
   const handleDetectUnfollowers = async () => {
@@ -133,10 +133,10 @@ export function FileUpload() {
       }
 
       const followerUsernames = new Set(
-        followers.map((f) => f.username.toLowerCase())
+        followers.map((f) => f.username.toLowerCase()),
       );
       const unfollowers = followings.filter(
-        (following) => !followerUsernames.has(following.username.toLowerCase())
+        (following) => !followerUsernames.has(following.username.toLowerCase()),
       );
 
       localStorage.setItem("unfollowers", JSON.stringify(unfollowers));
@@ -181,7 +181,7 @@ export function FileUpload() {
           onChange={(e) => setFollowingsFile(e.target.files?.[0] || null)}
         />
       </div>
-      <Button onClick={handleDetectUnfollowers} className="w-full">
+      <Button onClick={handleDetectUnfollowers} className="w-full rounded-lg">
         <Upload className="w-4 h-4 mr-2 rounded-lg" />
         Detect Unfollowers
       </Button>
