@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.5](https://github.com/bimamib/instagram-unfollow-trackers/compare/v2.1.4...v2.1.5) (2026-04-02)
+
+
+### Features
+
+* update release metadata for version 2.1.4 ([fbcdd5a](https://github.com/bimamib/instagram-unfollow-trackers/commit/fbcdd5a952bb94d07983d46abf943b234fc99582))
+
+
+### Bug Fixes
+
+* add missing comma in PaginationLink component ([fb22f1c](https://github.com/bimamib/instagram-unfollow-trackers/commit/fb22f1ce06cd28f03db0dde82a300a88d7c8a5a4))
+
 ### [2.1.4](https://github.com/bimamib/instagram-unfollow-trackers/compare/v2.1.3...v2.1.4) (2026-02-17)
 
 
