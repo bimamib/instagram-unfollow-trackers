@@ -56,7 +56,7 @@ const PaginationLink = ({
         size,
       }),
       "h-8 w-8 p-0 border",
-      className
+      className,
     )}
     {...props}
   />
