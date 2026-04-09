@@ -1,11 +1,8 @@
 # 📊 Instagram Unfollowers Tracker
 
-<p align="justify">
-  A modern web application built with **Next.js + TypeScript** to analyze your Instagram data and identify **unfollowers**.
+A modern web application built with **Next.js + TypeScript** to analyze your Instagram data and identify **unfollowers**.
 
 This app works by uploading your Instagram data export (`followers.json` and `following.json`) provided by Meta, then comparing them to find accounts that **don’t follow you back**.
-
-</p>
 
 ---
 
@@ -117,7 +114,7 @@ app/
 ```
 components/
  ├── changelog/
- │    └── ReleaseCard.tsx    # Release / changelog card
+ │    └── ReleaseCard.tsx   # Release / changelog card
  │
  ├── ui/                    # shadcn UI components
  │
