@@ -1,8 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📊 Instagram Unfollowers Tracker
 
-## Getting Started
+<p align="justify">
+  A modern web application built with **Next.js + TypeScript** to analyze your Instagram data and identify **unfollowers**.
 
-First, run the development server:
+This app works by uploading your Instagram data export (`followers.json` and `following.json`) provided by Meta, then comparing them to find accounts that **don’t follow you back**.
+
+</p>
+
+---
+
+## 🚀 Tech Stack
+
+- **Next.js**: 14.2.3 (App Router)
+- **React**: ^18
+- **TypeScript**: ^5
+- **Tailwind CSS**
+- **shadcn/ui (Radix UI)**
+- **MDX** (for changelog/content)
+- **Lucide React** (icons)
+- **Framer Motion** (animations)
+
+---
+
+## 📦 Requirements
+
+Make sure your environment has:
+
+- **Node.js**: >= 18.x
+- **npm**: >= 9.x
+
+Check versions:
+
+```bash
+node -v
+npm -v
+```
+
+---
+
+## ⚙️ Installation
+
+Clone this repository:
+
+```bash
+git clone https://github.com/bimamib/instagram-unfollow-trackers
+cd instagram-unfollow-trackers
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Running the Project
+
+Start development server:
 
 ```bash
 npm run dev
@@ -14,23 +69,150 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open in browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## 🏗️ Build & Production
 
-To learn more about Next.js, take a look at the following resources:
+Build the project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Run production server:
 
-## Deploy on Vercel
+```bash
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 📁 Project Structure
+
+```
+app/
+ ├── changelog/
+ │    ├── content.mdx        # Changelog content (MDX)
+ │    └── page.tsx           # Changelog page
+ │
+ ├── unfollowers/
+ │    └── page.tsx           # Unfollowers result page
+ │
+ ├── layout.tsx              # Root layout
+ ├── page.tsx                # Home page (upload JSON)
+ ├── globals.css             # Global styles
+ ├── robots.ts               # SEO robots config
+ ├── sitemap.ts              # Sitemap generator
+ │
+ ├── favicon.ico
+ └── ig-favicon.ico
+```
+
+```
+components/
+ ├── changelog/
+ │    └── ReleaseCard.tsx    # Release / changelog card
+ │
+ ├── ui/                    # shadcn UI components
+ │
+ ├── file-upload.tsx        # JSON upload handler
+ ├── home-client.tsx        # Home page logic (client side)
+ ├── instructions-card.tsx  # How-to-use instructions
+ ├── footer.tsx             # Footer component
+ ├── theme-provider.tsx     # Theme provider
+ ├── theme-toggle.tsx       # Dark/light toggle
+ │
+ ├── unfollowers-client.tsx # Unfollowers logic
+ └── unfollowers-table.tsx  # Result table UI
+```
+
+```
+hooks/
+ └── (custom hooks)
+```
+
+---
+
+## 🔍 Features
+
+- 📂 Upload Instagram data:
+  - `followers.json`
+  - `following.json`
+
+- 🔎 Detect:
+  - ❌ Users who don’t follow you back
+  - ✅ Mutual followers (can be extended)
+
+- 📊 Interactive UI:
+  - Clean table display
+  - Responsive design
+  - Smooth animations
+
+- 🎨 Modern UI:
+  - Built with **shadcn/ui**
+  - Dark / light mode support
+
+- 📄 Changelog system:
+  - Powered by **MDX**
+  - Auto-generated release metadata
+
+---
+
+## 📥 How to Get Instagram Data
+
+1. Go to Instagram Settings
+2. Navigate to **Accounts Center**
+3. Select **Your Information**
+4. Download your data (JSON format)
+5. Extract:
+   - `followers.json`
+   - `following.json`
+
+Upload both files into the app.
+
+---
+
+## 🧪 Scripts
+
+Available scripts:
+
+```bash
+npm run dev            # Start development
+npm run build          # Build production
+npm run start          # Run production server
+npm run lint           # Lint project
+
+npm run release        # Create release (standard-version)
+npm run release:patch
+npm run release:minor
+npm run release:major
+```
+
+---
+
+## 🧹 Linting
+
+```bash
+npm run lint
+```
+
+---
+
+## 📌 Notes
+
+- Fully client-side processing (no data sent to server)
+- Privacy-friendly — your Instagram data stays local
+- Uses **JSON export from Meta** as data source
+- Easy to extend (mutuals, ghost followers, etc.)
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Bima Prasetio**
